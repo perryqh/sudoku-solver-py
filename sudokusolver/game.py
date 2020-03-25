@@ -12,13 +12,12 @@ class Game:
             for col in range(9):
                 if matrix[row][col] != 0:
                     continue
-                possibles = self.possible_values(matrix, row, col)
-                for candidate in possibles:
+                for candidate in self.possible_values(matrix, row, col):
                     matrix[row][col] = candidate
-                    if None != self.solve_it(matrix):
+                    if self.solve_it(matrix):
                         return matrix
                     matrix[row][col] = 0 # back to original value
-                return None  # nothing worked
+                return   # nothing worked
         return matrix
 
 
