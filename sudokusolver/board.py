@@ -16,6 +16,11 @@ class Board:
         return all(columns_valid)
 
     def all_three_by_threes_valid(self):
+        for row in [0,3,6]:
+            for col in [0,3,6]:
+                if not self.is_valid_three_by_three(self.matrix[row:row+3:1,col:col+3:1]):
+                    return False
+
         return True;
 
     def potential_values_for_position(self, row, column):

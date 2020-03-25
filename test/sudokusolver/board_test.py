@@ -35,6 +35,14 @@ class TestBoard(unittest.TestCase):
         self.assertFalse(Board(self.matrix).all_columns_valid())
         self.assertFalse(Board(self.matrix).is_valid())
 
+    def test_all_three_by_threes_valid(self):
+        self.assertTrue(self.board.all_three_by_threes_valid())
+
+    def test_invalid_all_three_by_threes_valid(self):
+        self.matrix[1][1] = 3
+        self.assertFalse(Board(self.matrix).all_three_by_threes_valid())
+        self.assertFalse(Board(self.matrix).is_valid())
+
     def test_is_valid_three_by_three(self):
         valid_three_by_three = [[1, 0, 3], [4, 5, 0], [7, 8, 9]]
         self.assertTrue(self.board.is_valid_three_by_three(valid_three_by_three))
