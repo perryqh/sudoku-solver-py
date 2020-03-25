@@ -16,6 +16,10 @@ class TestBoard(unittest.TestCase):
                        ]
         self.board = Board(self.matrix)
 
+    def test_potential_values_for_position(self):
+        self.assertEqual(self.board.potential_values_for_position(0, 8), [2, 4, 8])
+        self.assertEqual(self.board.potential_values_for_position(8, 0), [1, 2, 3])
+
     def test_is_valid(self):
         self.assertTrue(self.board.is_valid())
 

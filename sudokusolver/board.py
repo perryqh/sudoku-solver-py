@@ -23,8 +23,15 @@ class Board:
 
         return True;
 
-    def potential_values_for_position(self, row, column):
-        return []
+    def potential_values_for_position(self, row, col):
+        copymatrix = np.copy(self.matrix)
+        tryboard = Board(copymatrix)
+        potential_values = []
+        for tryval in range(1, 9):
+            tryboard.matrix[row][col] = tryval
+            if tryboard.is_valid():
+                potential_values.append(tryval)
+        return potential_values
 
     def is_valid_three_by_three(self, three_by_three):
         return self.is_unique_set(three_by_three);
