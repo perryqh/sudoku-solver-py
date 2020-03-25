@@ -20,6 +20,30 @@ class TestBoard(unittest.TestCase):
         self.assertEqual(self.board.potential_values_for_position(0, 8), [2, 4, 8])
         self.assertEqual(self.board.potential_values_for_position(8, 0), [1, 2, 3])
 
+    def test_bug_potential_values_for_position(self):
+        matrix = [[6, 4, 8, 1, 2, 3, 0, 5, 7],
+                  [0, 1, 3, 0, 0, 0, 6, 0, 0],
+                  [0, 0, 0, 6, 0, 5, 0, 8, 0],
+                  [0, 5, 0, 0, 9, 0, 4, 2, 8],
+                  [0, 0, 0, 7, 6, 4, 0, 0, 0],
+                  [9, 3, 4, 0, 5, 0, 0, 6, 0],
+                  [0, 6, 0, 9, 0, 2, 0, 0, 0],
+                  [0, 0, 1, 0, 0, 0, 2, 7, 0],
+                  [3, 2, 0, 0, 0, 7, 0, 0, 0]]
+        self.assertEqual(Board(matrix).is_valid(), True)
+        self.assertEqual(Board(matrix).potential_values_for_position(0,5), [3,9])
+        matrix = [[6, 4, 8, 1, 2, 3, 9, 5, 7],
+                  [0, 1, 3, 0, 0, 0, 6, 0, 0],
+                  [0, 0, 0, 6, 0, 5, 0, 8, 0],
+                  [0, 5, 0, 0, 9, 0, 4, 2, 8],
+                  [0, 0, 0, 7, 6, 4, 0, 0, 0],
+                  [9, 3, 4, 0, 5, 0, 0, 6, 0],
+                  [0, 6, 0, 9, 0, 2, 0, 0, 0],
+                  [0, 0, 1, 0, 0, 0, 2, 7, 0],
+                  [3, 2, 0, 0, 0, 7, 0, 0, 0]]
+        self.assertEqual(Board(matrix).is_valid(), True)
+        self.assertEqual(Board(matrix).potential_values_for_position(0,6), [9])
+
     def test_is_valid(self):
         self.assertTrue(self.board.is_valid())
 

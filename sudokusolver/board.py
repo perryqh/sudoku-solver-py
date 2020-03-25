@@ -2,7 +2,7 @@ import numpy as np
 
 class Board:
     def __init__(self, matrix):
-        self.matrix = np.array(matrix)
+        self.matrix = np.array(np.copy(matrix))
 
     def is_valid(self):
         return self.all_rows_valid() and self.all_columns_valid() and self.all_three_by_threes_valid()
@@ -27,7 +27,7 @@ class Board:
         copymatrix = np.copy(self.matrix)
         tryboard = Board(copymatrix)
         potential_values = []
-        for tryval in range(1, 9):
+        for tryval in range(1, 10):
             tryboard.matrix[row][col] = tryval
             if tryboard.is_valid():
                 potential_values.append(tryval)
